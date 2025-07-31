@@ -116,7 +116,7 @@ unit_cell_power = ${fparse power / (n_bundles * n_coolant_channels_per_block) * 
   [Tallies]
     [heat_source]
       type = CellTally
-      blocks = ${fuel_blocks}
+      block = ${fuel_blocks}
       name = heat_source
 
       check_equal_mapped_tally_volumes = true
@@ -226,7 +226,8 @@ unit_cell_power = ${fparse power / (n_bundles * n_coolant_channels_per_block) * 
     type = KEigenvalue
   []
   [k_std_dev]
-    type = KStandardDeviation
+    type = KEigenvalue
+    output = 'std_dev'
   []
   [min_power]
     type = ElementExtremeValue

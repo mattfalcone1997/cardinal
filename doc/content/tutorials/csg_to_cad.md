@@ -184,6 +184,11 @@ This mesh can now be exported for use in multiphysics copuling.
 Cubit> export mesh "/Users/pshriwise/krusty.e"
 ```
 
+A different OpenMC model is needed to apply the DAGMC model generated, this is
+already present in the tutorial directory and will be used by Cardinal as it is
+set to the default filename expected by OpenMC ("model.xml"). This hybrid
+CSG/CAD model can also be produced by running the `make_hybrid_model.py` script.
+
 ## Multiphysics Coupling
 
 We have built a hybrid [!ac](CAD) and [!ac](CSG) model of the KRUSTY reactor in OpenMC,
@@ -266,8 +271,7 @@ Next, we specify how to pass data between OpenMC and the finite element heat
 conduction solver in the `fuel.i` input file. We will run the heat conduction solver
 as a sub-application. On every time step, we will pass temperature (into OpenMC)
 and the heating tally (out of OpenMC) as listed in the transfers block. The
-other details listed in this section are optimizations for faster transfers
-(`search_value_conflicts = false`) and details on the source/receiver variable
+other details listed in this section are details on the source/receiver variable
 names in each file and which postprocessors to use to ensure power conservation.
 
 !listing /tutorials/csg_to_cad/openmc.i
